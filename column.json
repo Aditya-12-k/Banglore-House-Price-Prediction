@@ -1,8 +1,0 @@
-import json
-
-columns = {
-    "data_columns": list(X.columns)
-}
-
-with open("columns.json", "w") as f:
-    json.dump(columns, f)
