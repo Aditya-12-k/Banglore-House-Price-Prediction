@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bangalore House Price Prediction</title>
+
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Bangalore House Price Prediction</h1>
+
+    <!-- Form sends data to /predict route -->
+    <form action="/predict" method="post">
+
+        <!-- Location Dropdown -->
+        <select name="location" required>
+            <option value="" disabled selected>Select Location</option>
+
+            <!-- Loop through locations list sent from Flask -->
+            {% for loc in locations %}
+                <option value="{{ loc }}">{{ loc }}</option>
+            {% endfor %}
+        </select>
+
+        <!-- Total Square Feet -->
+        <input type="number" name="total_sqft" placeholder="Total Square Feet" required>
+
+        <!-- Bathrooms -->
+        <input type="number" name="bath" placeholder="Number of Bathrooms" required>
+
+        <!-- BHK -->
+        <input type="number" name="bhk" placeholder="BHK" required>
+
+        <!-- Submit Button -->
+        <button type="submit">Predict Price</button>
+    </form>
+
+    <!-- Display Prediction -->
+    <h2>{{ prediction_text }}</h2>
+
+</div>
+
+</body>
+</html>
